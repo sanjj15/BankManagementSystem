@@ -1,0 +1,26 @@
+CREATE TABLE account_tbl (
+    account_number VARCHAR2(10) PRIMARY KEY,
+    customer_name  VARCHAR2(15),
+    balance        NUMBER(10,2)
+);
+
+
+INSERT ALL
+    INTO Author_tbl VALUES (12345678,'bharath',20000)
+    INTO Author_tbl VALUES (12345687,'sanjay',63600)
+    INTO Author_tbl VALUES (12345867,'vasanth',40000)
+SELECT * FROM dual;
+
+CREATE TABLE transfer_tbl (
+    transaction_id NUMBER(4) PRIMARY KEY,
+    account_number VARCHAR2(10),
+    beneficiary_account_number VARCHAR2(10),
+    transaction_date DATE,
+    transaction_amount NUMBER(10,2),
+    CONSTRAINT fk_account
+    FOREIGN KEY (account_number)
+    REFERENCES account_tbl(account_number)
+);
+
+
+		
